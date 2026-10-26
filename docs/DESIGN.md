@@ -240,7 +240,7 @@ docs/           BRIEF.md, DESIGN.md, BUILD_LOG.md
 
 ## 10. Simulator and verification
 
-`npm run simulate` uses an explicit simulation mode, fake monotonic clock, synthetic chat identities, and fake OBS adapter. No Twitch/OBS connection, credential read, model call, or bot message. It uses the same normalization, pre-filter, keyword analyzer, history, engine, and UI event contracts as live mode. Classifier-output fixtures test the LLM boundary; they are labelled mocked and do not prove live model quality. Playback can run in real time or instantly under tests.
+`npm run simulate` uses explicit simulation mode, a fake monotonic clock, synthetic identities, and fake OBS telemetry. No credentials, external connections, model calls, or bot sends. It shares normalization, keyword analysis, history, engine, and UI contracts. M3 classifier-output fixtures will test the LLM boundary as labelled mocks, not live model evidence. Playback runs in real time or instantly under tests.
 
 | Required scenario | Observable assertion |
 | --- | --- |

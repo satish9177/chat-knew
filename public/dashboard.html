@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <title>Chat Knew · Streamer dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Chat Knew dashboard"><span class="brand-symbol" aria-hidden="true">ck</span><span>CHAT <b>KNEW</b></span></a>
+      <div class="topbar-right"><span class="mode-tag" id="mode-tag">CONNECTING</span><span class="connection" id="connection"><span class="status-dot"></span><span id="connection-text">Connecting</span></span></div>
+    </header>
+
+    <main>
+      <div class="page-heading"><div><p class="eyebrow">YOUR QUIET CO-PILOT</p><h1>The stream listens back.</h1><p class="page-subtitle">Chat spots it. We check it. You stay in control.</p></div><button class="button subtle" id="toggle-alerts" type="button" disabled>Pause alerts</button></div>
+
+      <div class="notice" id="notice" role="status">Connecting to the local app…</div>
+
+      <section class="status-strip" aria-label="Connections">
+        <div class="status-item"><span class="status-dot" id="obs-dot"></span><div><span class="status-label">OBS</span><strong id="obs-status">Waiting</strong></div></div>
+        <div class="status-item"><span class="status-dot" id="twitch-dot"></span><div><span class="status-label">TWITCH</span><strong id="twitch-status">Waiting</strong></div></div>
+        <div class="status-item"><span class="status-dot" id="classifier-dot"></span><div><span class="status-label">CHAT ANALYSIS</span><strong id="classifier-status">Keyword mode</strong></div></div>
+        <div class="status-item"><span class="status-dot" id="audio-dot"></span><div><span class="status-label">PRIVATE ALERT</span><strong id="audio-status">Not ready</strong></div></div>
+      </section>
+
+      <section class="telemetry-grid" aria-label="Live evidence">
+        <article class="telemetry-card">
+          <div class="card-heading"><h2>Mic / Aux</h2><span class="small-tag" id="mic-state">UNKNOWN</span></div>
+          <div class="mic-reading"><span id="mic-db">—</span><span class="unit">dBFS</span></div>
+          <div class="meter" role="meter" aria-label="Microphone level" aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-60" id="mic-meter"><span id="mic-level"></span><i class="threshold"></i></div>
+          <div class="meter-scale"><span>−60</span><span>−40</span><span>−20</span><span>0</span></div>
+          <p class="card-footnote" id="mic-route">Waiting for microphone evidence</p>
+        </article>
+        <article class="telemetry-card">
+          <div class="card-heading"><h2>Program scene</h2><span class="tiny-label">ON AIR</span></div>
+          <div class="scene-reading" id="scene-name">—</div>
+          <p class="card-footnote" id="stream-state">Waiting for stream state</p>
+          <div class="scene-caption">The scene viewers see, not the preview.</div>
+        </article>
+        <article class="telemetry-card">
+          <div class="card-heading"><h2>Chat consensus</h2><span class="tiny-label">DISTINCT PEOPLE</span></div>
+          <div class="consensus-reading"><span id="consensus-count">0</span><span class="consensus-total">/ <span id="consensus-required">3</span></span></div>
+          <div class="consensus-dots" id="consensus-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="card-footnote" id="consensus-detail">Waiting for matching reports</p>
+        </article>
+      </section>
+
+      <div class="workspace-grid">
+        <div class="main-column">
+          <section class="incident-panel" id="incident-panel" aria-labelledby="incident-heading">
+            <div class="panel-top"><span class="eyebrow">RIGHT NOW</span><span class="live-status" id="incident-status"><span class="status-dot"></span>Watching</span></div>
+            <div class="incident-symbol" id="incident-symbol" aria-hidden="true">✓</div>
+            <h2 id="incident-heading">Ready when chat knows.</h2>
+            <p id="incident-reason">Three matching voices are enough to start checking.</p>
+            <div class="incident-meta" id="incident-meta" hidden><span id="incident-reporters"></span><span id="incident-pings"></span><span id="incident-clock"></span></div>
+            <button class="button acknowledge" id="acknowledge" type="button" hidden>I know <span aria-hidden="true">✓</span></button>
+            <p class="acknowledge-note" id="acknowledge-note" hidden>Stops repeat pings and skips this incident's public stamp.</p>
+          </section>
+
+          <section class="preview-panel" aria-labelledby="preview-heading">
+            <div class="panel-top"><h2 id="preview-heading">On-stream moment</h2><a id="overlay-link" class="text-link" target="_blank" rel="noopener noreferrer">Open overlay <span aria-hidden="true">↗</span></a></div>
+            <div class="broadcast-preview" id="broadcast-preview">
+              <span class="preview-corner">1920 × 1080 · transparent source</span>
+              <span class="preview-sim" id="preview-sim" hidden>SIMULATION</span>
+              <div class="preview-empty" id="preview-empty"><span class="preview-mark" aria-hidden="true">ck</span><p>A little credit. A big save.</p><small>Recovery stamps appear here.</small></div>
+              <div class="preview-stamp" id="preview-stamp" hidden><strong id="preview-title"></strong><p id="preview-detail"></p></div>
+            </div>
+            <div class="preview-footer"><p>Private issues stay off stream until the fix.</p><button class="button small subtle" id="preview-button" type="button" disabled>Preview stamp</button></div>
+          </section>
+        </div>
+
+        <section class="timeline-panel" aria-labelledby="timeline-heading">
+          <div class="panel-top"><h2 id="timeline-heading">This session</h2><span class="small-tag" id="wolf-count">0 WOLVES</span></div>
+          <ol class="timeline" id="timeline"><li class="timeline-empty">The story of your stream will show up here.<br><span>Only incident summaries. No saved chat.</span></li></ol>
+        </section>
+      </div>
+
+      <section class="replay-panel" aria-labelledby="replay-heading">
+        <div class="replay-heading"><div><p class="eyebrow">TRY IT WITHOUT A STREAM</p><h2 id="replay-heading">The rehearsal room</h2></div><span class="small-tag mint">NO KEYS NEEDED</span></div>
+        <div class="replay-content"><div class="scenario-choice"><label for="scenario-select">Scenario</label><select id="scenario-select" disabled><option>Loading scenarios…</option></select><p id="scenario-description">Synthetic chat and mic evidence run through the same incident engine.</p></div><div class="replay-transport"><div class="replay-time"><strong id="replay-position">0:00</strong><span>/ <span id="replay-duration">0:00</span></span></div><div class="progress-track" role="progressbar" aria-label="Replay progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="replay-progress"><span id="replay-fill"></span></div><div class="transport-buttons"><button class="button primary" id="play-replay" type="button" disabled>Play scenario</button><button class="button subtle" id="restart-replay" type="button" disabled>Restart</button><button class="button subtle" id="step-replay" type="button" disabled>+5 seconds</button></div></div></div>
+      </section>
+
+      <footer><span>CHAT KNEW <span class="footer-dot">·</span> Mute plugins listen to your mic. We listen to your viewers.</span><span>M1 · local rehearsal</span></footer>
+    </main>
+  </div>
+</body>
+</html>

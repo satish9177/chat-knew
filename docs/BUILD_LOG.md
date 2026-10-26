@@ -19,7 +19,14 @@ Keep each entry short: date, work, decisions, visible evidence, and remaining ga
 
 ## M1 — simulator and engine
 
-**PLANNED.** Build the shared pipeline, five scenarios, timing/consensus tests, and basic dashboard/overlay. Exit: visible replay with passing regression tests and no post-fix wolf event.
+**COMPLETE — 26 October 2026 (local simulation only).**
+
+- Built the deterministic history/consensus/incident engine and keyword fallback, plus five synthetic replays through the shared pipeline. Implemented the revised wolf pause/occupancy rule, immediate stable-fix stamp, live unique counts and badge expiry, acknowledgements, repeat-ping cap, cooldowns, and require-live/offline gate.
+- Added the tokenized loopback server, disconnected startup mode, dashboard and transparent overlay. Simulator controls cannot call live services. Private pings are visible requests only; no audio plays. README is now UTF-8 and documents startup, scope and future OpenAI chat-text disclosure.
+- Verification: TypeScript check and **41 Vitest tests passed** on Node 24.19.0/Windows; both browser scripts pass syntax checks. Tests include all five scenarios, Hindi fallback, normal-pause wolf, stale/missing data, grace counts/dedup, historical repair duration, “I know,” ping limits and cooldowns. Sandbox test temp files were redirected into gitignored `.local/tmp` to avoid a Windows rename restriction.
+- Browser QA: confirmed mute → three viewers → recovery stamp; wolf graphic with requested unnamed copy; late count grows 3→5 in the same badge; “I know” retracts it. Visual screenshots are local ignored artifacts. BRIEF.md's SHA-256 matches the original attachment exactly.
+- Codex session ID from this chat's app metadata: `01a1775b-8f99-75b3-8269-b3d51b9f591b`. Engine, integration and tests stayed in this chat; subagents handled public UI and simulator fixtures.
+- Remaining: real Twitch/OBS connections, auth helper, private audio isolation, actual delay/meter calibration, all-chat LLM calls, bot sends and live multilingual proof are **not implemented/tested**. These remain M2/M3; replay is not hardware validation.
 
 ## M2 — real Twitch and OBS
 
@@ -27,7 +34,7 @@ Keep each entry short: date, work, decisions, visible evidence, and remaining ga
 
 ## M3 — classifier, polish, and handoff
 
-**PLANNED.** Add structured classification/fallback, verify remaining live scenarios, polish visuals, and test clean-clone setup. Exit: feature-complete core, documented limitations, passing relevant checks; optional sends only if time remains.
+**PLANNED.** Add all-chat structured classification/fallback and factual bot replies with Shared Chat suppression, verify live/multilingual scenarios, polish visuals, and test clean-clone setup. Cut bot replies first if late.
 
 ## Acceptance stream and submission
 
