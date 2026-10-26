@@ -1,0 +1,20 @@
+{
+  "port": 8787,
+  "broadcasterId": "streamer",
+  "botId": "chat-knew-bot",
+  "awayScenes": ["BRB", "Starting Soon", "Ending"],
+  "delayMinMs": 2000,
+  "delayMaxMs": 15000,
+  "graceMs": 25000,
+  "historyMs": 60000,
+  "consensusCount": 3,
+  "consensusMs": 20000,
+  "signalDb": -40,
+  "recoveryDb": -35,
+  "wolfQuietMs": 3000,
+  "wolfSpeechFraction": 0.5,
+  "publicWolf": true,
+  "requireLive": true,
+  "pingIntervalMs": 30000,
+  "pingMax": 4
+}

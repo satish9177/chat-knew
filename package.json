@@ -1,0 +1,24 @@
+{
+  "name": "chat-knew",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chat reports, local evidence, streamer control.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "simulate": "tsx src/main.ts --simulate",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test"
+  },
+  "dependencies": { "ws": "^8.18.3", "zod": "^4.1.12" },
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.3"
+  }
+}
